@@ -50,12 +50,23 @@ Antes de ejecutar la aplicación, asegúrate de tener instalado:
 npm install -g expo-cli
 ```
 
+### Para Emuladores (Opcional)
+
+#### iOS Simulator (Solo macOS)
+- **Xcode**: Instala desde Mac App Store
+- **iOS Simulator**: Se incluye con Xcode
+
+#### Android Emulator
+- **Android Studio**: [Descargar aquí](https://developer.android.com/studio)
+- **Android SDK**: Se configura automáticamente con Android Studio
+- **Emulador Android**: Crear un dispositivo virtual desde Android Studio
+
 ## 🚀 Instrucciones de Instalación y Ejecución
 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/fmoralesjmc/prueba-TakeMed.git
 cd prueba-TakeMed
 ```
 
@@ -77,20 +88,94 @@ o
 expo start
 ```
 
-### 4. Visualizar en dispositivo
+### 4. Opciones de Visualización
 
-Después de ejecutar el comando anterior, se abrirá una página web con un código QR. Tienes varias opciones:
+Después de ejecutar el comando anterior, se abrirá una página web con un código QR y opciones de ejecución:
 
-#### Opción A: Dispositivo físico
+#### 📱 Opción A: Dispositivo físico
 1. Instala la app **Expo Go** en tu dispositivo móvil:
    - [iOS App Store](https://apps.apple.com/app/expo-go/id982107779)
    - [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
 2. Escanea el código QR con la cámara (iOS) o con la app Expo Go (Android)
 
-#### Opción B: Simulador/Emulador
-- **iOS Simulator**: Presiona `i` en la terminal
-- **Android Emulator**: Presiona `a` en la terminal
-- **Web**: Presiona `w` en la terminal
+#### 💻 Opción B: Emuladores/Simuladores
+
+##### iOS Simulator (macOS únicamente)
+```bash
+# Método 1: Desde la terminal de Expo
+# Presiona 'i' en la terminal donde está corriendo expo start
+
+# Método 2: Comando directo
+npm run ios
+# o
+expo start --ios
+```
+
+**Requisitos para iOS:**
+- macOS (iOS Simulator no funciona en Windows/Linux)
+- Xcode instalado desde Mac App Store
+- iOS Simulator configurado
+
+**Pasos detallados:**
+1. Abre Xcode
+2. Ve a `Xcode > Preferences > Components`
+3. Descarga el simulador de iOS deseado
+4. Ejecuta `expo start` y presiona `i`
+
+##### Android Emulator
+```bash
+# Método 1: Desde la terminal de Expo
+# Presiona 'a' en la terminal donde está corriendo expo start
+
+# Método 2: Comando directo
+npm run android
+# o
+expo start --android
+```
+
+**Requisitos para Android:**
+- Android Studio instalado
+- Android SDK configurado
+- Emulador Android creado y ejecutándose
+
+**Pasos detallados:**
+1. Abre Android Studio
+2. Ve a `Tools > AVD Manager`
+3. Crea un nuevo dispositivo virtual (recomendado: Pixel 4 con API 30+)
+4. Inicia el emulador
+5. Ejecuta `expo start` y presiona `a`
+
+##### Web Browser
+```bash
+# Método 1: Desde la terminal de Expo
+# Presiona 'w' en la terminal donde está corriendo expo start
+
+# Método 2: Comando directo
+npm run web
+# o
+expo start --web
+```
+
+La aplicación se abrirá automáticamente en tu navegador en `http://localhost:8081`
+
+## 🔧 Comandos Disponibles
+
+```bash
+# Iniciar el servidor de desarrollo
+npm start
+expo start
+
+# Ejecutar específicamente en cada plataforma
+npm run android    # Android emulator
+npm run ios        # iOS simulator (solo macOS)
+npm run web        # Navegador web
+
+# Comandos de Expo CLI
+expo start --android    # Abrir directamente en Android
+expo start --ios        # Abrir directamente en iOS
+expo start --web        # Abrir directamente en web
+expo start --clear      # Limpiar caché y reiniciar
+```
 
 ## 📁 Estructura del Proyecto
 
@@ -104,6 +189,7 @@ prueba-TakeMed/
 ├── package.json                # Dependencias del proyecto
 ├── app.json                    # Configuración de Expo
 ├── babel.config.js             # Configuración de Babel
+├── metro.config.js             # Configuración de Metro
 └── README.md                   # Este archivo
 ```
 
@@ -118,22 +204,6 @@ prueba-TakeMed/
 - **Iconografía**: Íconos vectoriales de Ionicons
 - **Tipografía**: Jerarquía clara y legible
 - **Colores**: Paleta profesional y accesible
-
-## 🔧 Comandos Disponibles
-
-```bash
-# Iniciar el servidor de desarrollo
-npm start
-
-# Ejecutar en Android
-npm run android
-
-# Ejecutar en iOS
-npm run ios
-
-# Ejecutar en web
-npm run web
-```
 
 ## 📱 Funcionalidades Implementadas
 
@@ -181,13 +251,42 @@ npm install
 npx expo install --fix
 ```
 
+### Android Emulator no detectado
+```bash
+# Verificar que el emulador esté ejecutándose
+adb devices
+
+# Reiniciar ADB si es necesario
+adb kill-server
+adb start-server
+```
+
+### Error de dependencias incompatibles
+```bash
+npx expo install --fix
+```
+
+### Problemas con caché
+```bash
+expo start --clear
+# o
+npx expo start --clear
+```
+
 ## 📞 Soporte
 
 Si encuentras algún problema durante la instalación o ejecución:
 
 1. Verifica que tienes las versiones correctas de Node.js y Expo CLI
 2. Asegúrate de que todas las dependencias estén instaladas
-3. Revisa que tu dispositivo/emulador esté conectado correctamente
+3. Para iOS: Verifica que Xcode esté instalado y actualizado
+4. Para Android: Verifica que Android Studio esté configurado correctamente
+5. Revisa que tu dispositivo/emulador esté conectado correctamente
+
+### Enlaces Útiles
+- [Documentación oficial de Expo](https://docs.expo.dev/)
+- [Configuración de Android Studio](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [Configuración de iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/)
 
 ## 🎯 Próximas Mejoras
 
