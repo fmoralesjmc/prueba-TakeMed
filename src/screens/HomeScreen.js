@@ -131,7 +131,7 @@ export default function HomeScreen() {
       ])
     ).start();
 
-    // Flotación suave
+    // Flotación suave solo para íconos
     Animated.loop(
       Animated.sequence([
         Animated.timing(floatingAnim, {
@@ -243,7 +243,6 @@ export default function HomeScreen() {
           styles.content,
           {
             opacity: fadeInAnim,
-            transform: [{ translateY: floatingAnim }],
           }
         ]}
       >
@@ -254,7 +253,6 @@ export default function HomeScreen() {
             {
               transform: [
                 { translateX: slideInAnim },
-                { scale: pulseAnim },
               ],
             }
           ]}

@@ -140,7 +140,7 @@ export default function HealthTipsScreen() {
       ])
     ).start();
 
-    // Flotación suave
+    // Flotación suave solo para íconos
     Animated.loop(
       Animated.sequence([
         Animated.timing(floatingAnim, {
@@ -270,19 +270,12 @@ export default function HealthTipsScreen() {
             />
           </Animated.View>
           
-          <Animated.View 
-            style={[
-              styles.tipHeaderText,
-              {
-                transform: [{ translateY: floatingAnim }],
-              }
-            ]}
-          >
+          <View style={styles.tipHeaderText}>
             <Text style={styles.tipTitle}>{tip.title}</Text>
             <Text style={styles.tipPreview} numberOfLines={isExpanded ? 0 : 2}>
               {tip.description}
             </Text>
-          </Animated.View>
+          </View>
           
           <Animated.View
             style={{
@@ -394,26 +387,10 @@ export default function HealthTipsScreen() {
             }
           ]}
         >
-          <Animated.Text 
-            style={[
-              styles.headerTitle,
-              {
-                transform: [{ scale: pulseAnim }],
-              }
-            ]}
-          >
-            Consejos de Salud
-          </Animated.Text>
-          <Animated.Text 
-            style={[
-              styles.headerSubtitle,
-              {
-                transform: [{ translateY: floatingAnim }],
-              }
-            ]}
-          >
+          <Text style={styles.headerTitle}>Consejos de Salud</Text>
+          <Text style={styles.headerSubtitle}>
             Recomendaciones personalizadas para tu bienestar
-          </Animated.Text>
+          </Text>
         </Animated.View>
 
         {/* Estadísticas con animación elástica */}
@@ -456,16 +433,7 @@ export default function HealthTipsScreen() {
                 }
               ]}
             >
-              <Animated.Text 
-                style={[
-                  styles.statNumber,
-                  {
-                    transform: [{ scale: pulseAnim }],
-                  }
-                ]}
-              >
-                {stat.number}
-              </Animated.Text>
+              <Text style={styles.statNumber}>{stat.number}</Text>
               <Text style={styles.statLabel}>{stat.label}</Text>
             </Animated.View>
           ))}
@@ -509,16 +477,9 @@ export default function HealthTipsScreen() {
             }
           ]}
         >
-          <Animated.Text 
-            style={[
-              styles.footerText,
-              {
-                transform: [{ translateY: floatingAnim }],
-              }
-            ]}
-          >
+          <Text style={styles.footerText}>
             💡 Recuerda: La constancia es clave para mantener un estilo de vida saludable
-          </Animated.Text>
+          </Text>
         </Animated.View>
       </Animated.ScrollView>
     </LinearGradient>
